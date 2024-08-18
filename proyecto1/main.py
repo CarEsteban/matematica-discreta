@@ -19,10 +19,17 @@ def main():
     while True:
         mostrar_menu()
         opcion = obtener_opcion()
-        
+
         if opcion == 1:
             print("Opción 1: Construir conjuntos seleccionada.")
-            # Aquí iría el código para construir conjuntos
+            print("Los conjuntos solo pueden contener letras de la A-Z y números del 0-9.")
+            elementosA = input("Ingrese los elementos del conjunto A separados por espacios: ")
+            conjuntoA = leerConjunto(elementosA)
+            elementosB = input("Ingrese los elementos del conjunto B separados por espacios: ")
+            conjuntoB = leerConjunto(elementosB)
+            print(f"Conjunto A: {conjuntoA}")
+            print(f"Conjunto B: {conjuntoB}")
+            
         elif opcion == 2:
             print("Opción 2: Operar conjuntos seleccionada.")
             # Aquí iría el código para operar conjuntos
@@ -30,6 +37,28 @@ def main():
             print("Opción 3: Finalizar seleccionada.")
             print("Saliendo del programa...")
             break
+
+def leerConjunto(elementos):
+    conjunto = set(elementos.split())
+    if all(elementos.isalnum and len (elementos) == 1 for elementos in elementos.split()):
+        return (conjunto)
+    else:
+        print("Error: Por favor ingrese elementos válidos.")
+        return set()
+    
+
+def unirConjuntos(conjuntoA, conjuntoB):
+    return {elemento for conjunto in [ conjuntoA, conjuntoB] for elemento in conjunto}
+
+def interseccionConjuntos(conjuntoA, conjuntoB):
+    return {elemento for elemento in conjuntoA if elemento in conjuntoB}
+
+def diferenciaConjuntos(conjuntoA, conjuntoB):
+    return {elemento for elemento in conjuntoA if elemento not in conjuntoB}
+
+def diferenciaSimetricaConjuntos(conjuntoA, conjuntoB):
+    return {elemento for elemento in conjuntoA if elemento not in conjuntoB}.union({elemento for elemento in conjuntoB if elemento not in conjuntoA})
+
 
 if __name__ == "__main__":
     main()
