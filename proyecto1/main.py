@@ -38,8 +38,11 @@ def main():
             print("Saliendo del programa...")
             break
 
+#Opciones de operaciones con conjuntos
+
 def leerConjunto(elementos):
-    conjunto = set(elementos.split())
+    # Verificar que los elementos sean válidos
+    conjunto = elementos.split()
     if all(elementos.isalnum and len (elementos) == 1 for elementos in elementos.split()):
         return (conjunto)
     else:
