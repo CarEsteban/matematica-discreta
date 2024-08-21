@@ -135,15 +135,15 @@ def opcionDeOperacion():
 
 def realizarOperacion(operacion, conjuntoA, conjuntoB):
     if operacion == 1:
-        realizar_complemento(conjuntoA, conjuntoB)
+        realizarComplemento(conjuntoA, conjuntoB)
     elif operacion == 2:
-        realizar_union(conjuntoA, conjuntoB)
+        realizarUnion(conjuntoA, conjuntoB)
     elif operacion == 3:
-        realizar_interseccion(conjuntoA, conjuntoB)
+        realizarInterseccion(conjuntoA, conjuntoB)
     elif operacion == 4:
-        realizar_diferencia(conjuntoA, conjuntoB)
+        realizarDiferencia(conjuntoA, conjuntoB)
     elif operacion == 5:
-        realizar_diferencia_simetrica(conjuntoA, conjuntoB)
+        realizarDiferenciaSimetrica(conjuntoA, conjuntoB)
 
 # ==========================
 # Funciones de operaciones con conjuntos 
@@ -159,14 +159,14 @@ def leerConjunto(elementos):
             print(f"Error: '{elemento}' no es un elemento válido.")
     return conjunto
 
-def realizar_complemento(conjuntoA, conjuntoB):
+def realizarComplemento(conjuntoA, conjuntoB):
     # El complemento de A en B (elementos en B que no están en A)
     complementoA = [elemento for elemento in conjuntoB if elemento not in conjuntoA]
     complementoB = [elemento for elemento in conjuntoA if elemento not in conjuntoB]
     print(f"Complemento de A respecto a B: {complementoA}")
     print(f"Complemento de B respecto a A: {complementoB}")
 
-def realizar_union(conjuntoA, conjuntoB):
+def realizarUnion(conjuntoA, conjuntoB):
     # La unión de A y B (elementos que están en A o en B, sin duplicados)
     union = list(conjuntoA)  # Convertimos el conjunto a una lista para poder usar append
     for elemento in conjuntoB:
@@ -174,17 +174,17 @@ def realizar_union(conjuntoA, conjuntoB):
             union.append(elemento)
     print(f"Unión de A y B: {union}")
 
-def realizar_interseccion(conjuntoA, conjuntoB):
+def realizarInterseccion(conjuntoA, conjuntoB):
     # La intersección de A y B (elementos que están en ambos conjuntos)
     interseccion = [elemento for elemento in conjuntoA if elemento in conjuntoB]
     print(f"Intersección de A y B: {interseccion}")
 
-def realizar_diferencia(conjuntoA, conjuntoB):
+def realizarDiferencia(conjuntoA, conjuntoB):
     # La diferencia de A y B (elementos que están en A pero no en B)
     diferencia = [elemento for elemento in conjuntoA if elemento not in conjuntoB]
     print(f"Diferencia de A menos B: {diferencia}")
 
-def realizar_diferencia_simetrica(conjuntoA, conjuntoB):
+def realizarDiferenciaSimetrica(conjuntoA, conjuntoB):
     # La diferencia simétrica de A y B (elementos que están en A o en B pero no en ambos)
     diferencia_simetrica = []
     for elemento in conjuntoA:
