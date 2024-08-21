@@ -41,14 +41,15 @@ def main():
 #Opciones de operaciones con conjuntos
 
 def leerConjunto(elementos):
-    # Verificar que los elementos sean válidos
-    conjunto = elementos.split()
-    if all(elementos.isalnum and len (elementos) == 1 for elementos in elementos.split()):
-        return (conjunto)
-    else:
-        print("Error: Por favor ingrese elementos válidos.")
-        return set()
-    
+    # Verificar que los elementos sean válidos y no repetidos
+    conjunto = set()
+    for elemento in elementos.split():
+        if elemento.isalnum() and len(elemento) == 1:
+            conjunto.add(elemento)  # Añadir elemento al conjunto, evitando duplicados
+        else:
+            print(f"Error: '{elemento}' no es un elemento válido.")
+    return conjunto
+
 
 def unirConjuntos(conjuntoA, conjuntoB):
     return {elemento for conjunto in [ conjuntoA, conjuntoB] for elemento in conjunto}
