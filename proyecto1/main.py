@@ -1,4 +1,12 @@
 # ==========================
+# Proyecto 1: Matematica Discreta
+# Integrante 1: Nicolás Concuá - 23197
+# Integrante 2: Esteban Carcamo - 23016
+# Operación de Conjuntos
+# ==========================
+
+
+# ==========================
 # Funciones principales
 # ==========================
 
@@ -6,8 +14,8 @@ def main():
     conjuntos = []
 
     while True:
-        mostrar_menu()
-        opcion = obtener_opcion()
+        mostrarMenu()
+        opcion = obtenerOpcion()
 
         # ==========================
         # Opción 1: Construir conjuntos
@@ -15,7 +23,7 @@ def main():
         if opcion == 1:
             print("\n--- Opción 1: Construir conjuntos seleccionada ---")
             print("Los conjuntos solo pueden contener letras de la A-Z y números del 0-9.")
-            num_conjuntos = obtener_numero_conjuntos()
+            num_conjuntos = obtenerNumConjuntos()
             
             for i in range(len(conjuntos), len(conjuntos) + num_conjuntos):
                 elementos = input(f"Ingrese los elementos del conjunto {i+1} separados por espacios: ")
@@ -34,17 +42,17 @@ def main():
                 print("\nError: Hace falta un conjunto más para operar.")
             else:
                 print("\n--- Opción 2: Operar conjuntos seleccionada ---")
-                mostrar_conjuntos(conjuntos)
-                conjuntoA_idx = obtener_conjunto_para_operar(conjuntos, "primer")
-                conjuntoB_idx = obtener_conjunto_para_operar(conjuntos, "segundo")
+                mostarConjuntos(conjuntos)
+                conjuntoA_idx = obtenerConjuntoParaOperar(conjuntos, "primer")
+                conjuntoB_idx = obtenerConjuntoParaOperar(conjuntos, "segundo")
                 print("-----------------------------------------------")
                 print(f"Operando entre Conjunto {conjuntoA_idx + 1} como A y Conjunto {conjuntoB_idx + 1} como B")
                 print("-----------------------------------------------")
                 
                 # Mostrar menú de operaciones
-                mostrar_menu_operaciones()
-                operacion = obtener_opcion_operacion()
-                realizar_operacion(operacion, conjuntos[conjuntoA_idx], conjuntos[conjuntoB_idx])
+                menuOperaciones()
+                operacion = opcionDeOperacion()
+                realizarOperacion(operacion, conjuntos[conjuntoA_idx], conjuntos[conjuntoB_idx])
                 print("-----------------------------------------------\n")
         
         # ==========================
@@ -60,14 +68,14 @@ def main():
 # Funciones auxiliares
 # ==========================
 
-def mostrar_menu():
+def mostrarMenu():
     print("\n========= Menú Principal =========")
     print("1. Construir conjuntos")
     print("2. Operar conjuntos")
     print("3. Finalizar")
     print("==================================")
 
-def obtener_opcion():
+def obtenerOpcion():
     while True:
         try:
             opcion = int(input("Seleccione una opción (1-3): "))
@@ -78,7 +86,7 @@ def obtener_opcion():
         except ValueError:
             print("Error: Entrada no válida. Por favor ingrese un número.")
 
-def obtener_numero_conjuntos():
+def obtenerNumConjuntos():
     while True:
         try:
             numero = int(input("¿Cuántos conjuntos desea ingresar?: "))
@@ -89,12 +97,12 @@ def obtener_numero_conjuntos():
         except ValueError:
             print("Error: Entrada no válida. Por favor ingrese un número.")
 
-def mostrar_conjuntos(conjuntos):
+def mostarConjuntos(conjuntos):
     print("\nConjuntos disponibles:")
     for idx, conjunto in enumerate(conjuntos):
         print(f"Conjunto {idx+1}: {conjunto}")
 
-def obtener_conjunto_para_operar(conjuntos, orden):
+def obtenerConjuntoParaOperar(conjuntos, orden):
     while True:
         try:
             seleccion = int(input(f"Seleccione el {orden} conjunto para operar (1-{len(conjuntos)}): ")) - 1
@@ -105,7 +113,7 @@ def obtener_conjunto_para_operar(conjuntos, orden):
         except ValueError:
             print("Error: Entrada no válida. Por favor ingrese un número.")
 
-def mostrar_menu_operaciones():
+def menuOperaciones():
     print("\n========= Menú de Operaciones =========")
     print("1. Complemento")
     print("2. Unión")
@@ -114,7 +122,7 @@ def mostrar_menu_operaciones():
     print("5. Diferencia Simétrica")
     print("=======================================")
 
-def obtener_opcion_operacion():
+def opcionDeOperacion():
     while True:
         try:
             opcion = int(input("Seleccione una operación (1-5): "))
@@ -125,7 +133,7 @@ def obtener_opcion_operacion():
         except ValueError:
             print("Error: Entrada no válida. Por favor ingrese un número.")
 
-def realizar_operacion(operacion, conjuntoA, conjuntoB):
+def realizarOperacion(operacion, conjuntoA, conjuntoB):
     if operacion == 1:
         realizar_complemento(conjuntoA, conjuntoB)
     elif operacion == 2:
@@ -138,7 +146,7 @@ def realizar_operacion(operacion, conjuntoA, conjuntoB):
         realizar_diferencia_simetrica(conjuntoA, conjuntoB)
 
 # ==========================
-# Funciones de operaciones con conjuntos (definidas sin implementación)
+# Funciones de operaciones con conjuntos 
 # ==========================
 
 def leerConjunto(elementos):
@@ -191,5 +199,4 @@ def realizar_diferencia_simetrica(conjuntoA, conjuntoB):
 # Iniciar programa
 # ==========================
 
-if __name__ == "__main__":
-    main()
+main()
