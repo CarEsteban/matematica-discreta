@@ -152,19 +152,40 @@ def leerConjunto(elementos):
     return conjunto
 
 def realizar_complemento(conjuntoA, conjuntoB):
-    pass  # Implementar operación de complemento
+    # El complemento de A en B (elementos en B que no están en A)
+    complementoA = [elemento for elemento in conjuntoB if elemento not in conjuntoA]
+    complementoB = [elemento for elemento in conjuntoA if elemento not in conjuntoB]
+    print(f"Complemento de A respecto a B: {complementoA}")
+    print(f"Complemento de B respecto a A: {complementoB}")
 
 def realizar_union(conjuntoA, conjuntoB):
-    pass  # Implementar operación de unión
+    # La unión de A y B (elementos que están en A o en B, sin duplicados)
+    union = list(conjuntoA)  # Convertimos el conjunto a una lista para poder usar append
+    for elemento in conjuntoB:
+        if elemento not in union:
+            union.append(elemento)
+    print(f"Unión de A y B: {union}")
 
 def realizar_interseccion(conjuntoA, conjuntoB):
-    pass  # Implementar operación de intersección
+    # La intersección de A y B (elementos que están en ambos conjuntos)
+    interseccion = [elemento for elemento in conjuntoA if elemento in conjuntoB]
+    print(f"Intersección de A y B: {interseccion}")
 
 def realizar_diferencia(conjuntoA, conjuntoB):
-    pass  # Implementar operación de diferencia
+    # La diferencia de A y B (elementos que están en A pero no en B)
+    diferencia = [elemento for elemento in conjuntoA if elemento not in conjuntoB]
+    print(f"Diferencia de A menos B: {diferencia}")
 
 def realizar_diferencia_simetrica(conjuntoA, conjuntoB):
-    pass  # Implementar operación de diferencia simétrica
+    # La diferencia simétrica de A y B (elementos que están en A o en B pero no en ambos)
+    diferencia_simetrica = []
+    for elemento in conjuntoA:
+        if elemento not in conjuntoB:
+            diferencia_simetrica.append(elemento)
+    for elemento in conjuntoB:
+        if elemento not in conjuntoA:
+            diferencia_simetrica.append(elemento)
+    print(f"Diferencia Simétrica de A y B: {diferencia_simetrica}")
 
 # ==========================
 # Iniciar programa
