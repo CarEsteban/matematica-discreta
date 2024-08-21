@@ -37,8 +37,14 @@ def main():
                 mostrar_conjuntos(conjuntos)
                 conjuntoA_idx = obtener_conjunto_para_operar(conjuntos, "primer")
                 conjuntoB_idx = obtener_conjunto_para_operar(conjuntos, "segundo")
+                print("-----------------------------------------------")
                 print(f"Operando entre Conjunto {conjuntoA_idx + 1} como A y Conjunto {conjuntoB_idx + 1} como B")
-                # Aquí puedes agregar las operaciones que desees hacer con los dos conjuntos seleccionados.
+                print("-----------------------------------------------")
+                
+                # Mostrar menú de operaciones
+                mostrar_menu_operaciones()
+                operacion = obtener_opcion_operacion()
+                realizar_operacion(operacion, conjuntos[conjuntoA_idx], conjuntos[conjuntoB_idx])
                 print("-----------------------------------------------\n")
         
         # ==========================
@@ -99,8 +105,40 @@ def obtener_conjunto_para_operar(conjuntos, orden):
         except ValueError:
             print("Error: Entrada no válida. Por favor ingrese un número.")
 
+def mostrar_menu_operaciones():
+    print("\n========= Menú de Operaciones =========")
+    print("1. Complemento")
+    print("2. Unión")
+    print("3. Intersección")
+    print("4. Diferencia")
+    print("5. Diferencia Simétrica")
+    print("=======================================")
+
+def obtener_opcion_operacion():
+    while True:
+        try:
+            opcion = int(input("Seleccione una operación (1-5): "))
+            if opcion in [1, 2, 3, 4, 5]:
+                return opcion
+            else:
+                print("Error: Por favor seleccione una opción válida (1-5).")
+        except ValueError:
+            print("Error: Entrada no válida. Por favor ingrese un número.")
+
+def realizar_operacion(operacion, conjuntoA, conjuntoB):
+    if operacion == 1:
+        realizar_complemento(conjuntoA, conjuntoB)
+    elif operacion == 2:
+        realizar_union(conjuntoA, conjuntoB)
+    elif operacion == 3:
+        realizar_interseccion(conjuntoA, conjuntoB)
+    elif operacion == 4:
+        realizar_diferencia(conjuntoA, conjuntoB)
+    elif operacion == 5:
+        realizar_diferencia_simetrica(conjuntoA, conjuntoB)
+
 # ==========================
-# Funciones de operaciones con conjuntos
+# Funciones de operaciones con conjuntos (definidas sin implementación)
 # ==========================
 
 def leerConjunto(elementos):
@@ -113,18 +151,20 @@ def leerConjunto(elementos):
             print(f"Error: '{elemento}' no es un elemento válido.")
     return conjunto
 
-def unirConjuntos(conjuntoA, conjuntoB):
-    return {elemento for conjunto in [conjuntoA, conjuntoB] for elemento in conjunto}
+def realizar_complemento(conjuntoA, conjuntoB):
+    pass  # Implementar operación de complemento
 
-def interseccionConjuntos(conjuntoA, conjuntoB):
-    return {elemento for elemento in conjuntoA if elemento in conjuntoB}
+def realizar_union(conjuntoA, conjuntoB):
+    pass  # Implementar operación de unión
 
-def diferenciaConjuntos(conjuntoA, conjuntoB):
-    return {elemento for elemento in conjuntoA if elemento not in conjuntoB}
+def realizar_interseccion(conjuntoA, conjuntoB):
+    pass  # Implementar operación de intersección
 
-def diferenciaSimetricaConjuntos(conjuntoA, conjuntoB):
-    return {elemento for elemento in conjuntoA if elemento not in conjuntoB}.union({elemento for elemento in conjuntoB if elemento not in conjuntoA})
+def realizar_diferencia(conjuntoA, conjuntoB):
+    pass  # Implementar operación de diferencia
 
+def realizar_diferencia_simetrica(conjuntoA, conjuntoB):
+    pass  # Implementar operación de diferencia simétrica
 
 # ==========================
 # Iniciar programa
